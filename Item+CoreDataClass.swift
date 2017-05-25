@@ -2,7 +2,7 @@
 //  Item+CoreDataClass.swift
 //  DreamLister
 //
-//  Created by Kevin on 2017-05-24.
+//  Created by Kevin on 2017-05-25.
 //  Copyright © 2017 Monorail Apps. All rights reserved.
 //
 
@@ -11,9 +11,5 @@ import CoreData
 
 
 public class Item: NSManagedObject {
-    public override func awakeFromInsert() {
-        super.awakeFromInsert()
-        
-        self.created = NSDate()
-    }
+
 }

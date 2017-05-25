@@ -14,13 +14,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     @IBOutlet weak var tableView: UITableView!
     
     var controller: NSFetchedResultsController<Item>!
+    var ini = InitApp(context: context)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-        //generateTestData()
+        if !isInitialized() {
+            initilize()
+        }
         attemptFetch()
     }
     
@@ -72,11 +75,27 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return 150
     }
     
+    func isInitialized() -> Bool {
+        if !ini.isInit {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func initilize() {
+        initializeStoresTypes()
+        //generateTestData()
+        ini.isInit = true
+        ad.saveContext()
+    }
+    
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
         let priceSort = NSSortDescriptor(key: "price", ascending: true)
         let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        let typeSort = NSSortDescriptor(key: "toItemType", ascending: true)
         
         if segment.selectedSegmentIndex == 0 {
             fetchRequest.sortDescriptors = [dateSort]
@@ -84,9 +103,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             fetchRequest.sortDescriptors = [priceSort]
         } else if segment.selectedSegmentIndex == 2 {
             fetchRequest.sortDescriptors = [titleSort]
+        } else if segment.selectedSegmentIndex == 3 {
+            fetchRequest.sortDescriptors = [typeSort]
         }
-        
-
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -159,6 +178,30 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         item3.price = 110000
         item3.details = "Man this is a beautiful car. And one ady, I will own it."
     
+        ad.saveContext()
+    }
+    
+    func initializeStoresTypes() {
+        let store = Store(context: context)
+        store.name = "Best Buy"
+        let store2 = Store(context: context)
+        store2.name = "Tesla Dealership"
+        let store3 = Store(context: context)
+        store3.name = "Frys Electronics"
+        let store4 = Store(context: context)
+        store4.name = "Target"
+        let store5 = Store(context: context)
+        store5.name = "Amazon"
+        let store6 = Store(context: context)
+        store6.name = "K Mart"
+        
+        let type = ItemType(context: context)
+        type.type = "Electronics"
+        let type2 = ItemType(context: context)
+        type2.type = "Clothes"
+        let type3 = ItemType(context: context)
+        type3.type = "Other"
+        
         ad.saveContext()
     }
     

@@ -18,6 +18,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     @IBOutlet weak var thumbImage: UIImageView!
 
     var stores = [Store]()
+    var itemTypes = [ItemType]()
     var itemToEdit: Item?
     var imagePicker: UIImagePickerController!
     
@@ -32,54 +33,80 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         storePicker.dataSource = self
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        
-//        let store = Store(context: context)
-//        store.name = "Best Buy"
-//        let store2 = Store(context: context)
-//        store2.name = "Tesla Dealership"
-//        let store3 = Store(context: context)
-//        store3.name = "Frys Electronics"
-//        let store4 = Store(context: context)
-//        store4.name = "Target"
-//        let store5 = Store(context: context)
-//        store5.name = "Amazon"
-//        let store6 = Store(context: context)
-//        store6.name = "K Mart"
-//        ad.saveContext()
-        getStores()
+
+
+        getStoresTypes()
         
         if itemToEdit != nil {
             loadItemData()
         }
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let store = stores[row]
-        return store.name
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        if component == 0 {
+//            let store = stores[row]
+//            return store.name
+//        } else {
+//            let itemType = itemTypes[row]
+//            return itemType.type
+//        }
+//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stores.count
+        if component == 0 {
+            return stores.count
+        } else {
+            return itemTypes.count
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // update when selected
     }
     
-    func getStores() {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        if component == 0 {
+            var label = view as! UILabel!
+            if label == nil {
+                label = UILabel()
+            }
+            
+            let data = stores[row].name
+            let title = NSAttributedString(string: data!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
+            label?.attributedText = title
+            
+            return label!
+        } else {
+            var label = view as! UILabel!
+            if label == nil {
+                label = UILabel()
+            }
+            
+            let data = itemTypes[row].type
+            let title = NSAttributedString(string: data!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
+            label?.attributedText = title
+            
+            return label!
+        }
+    }
+    
+    func getStoresTypes() {
         let fetchRequest:NSFetchRequest<Store> = Store.fetchRequest()
-        
+        let fetchRequestItem:NSFetchRequest<ItemType> = ItemType.fetchRequest()
         do {
             self.stores = try context.fetch(fetchRequest)
+            self.itemTypes = try context.fetch(fetchRequestItem)
             self.storePicker.reloadAllComponents()
         } catch {
             //handle the error
         }
     }
+    
     
     @IBAction func savePressed(_ sender: UIButton) {
         var item: Item!
@@ -108,6 +135,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         }
         
         item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+        item.toItemType = itemTypes[storePicker.selectedRow(inComponent: 1)]
         
         ad.saveContext()
         navigationController?.popViewController(animated: true)
@@ -132,6 +160,18 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
                     index += 1
                 } while (index < stores.count)
             }
+            
+            if let itemType = item.toItemType {
+                var index = 0
+                repeat {
+                    let i = itemTypes[index]
+                    if i.type == itemType.type {
+                        storePicker.selectRow(index, inComponent: 1, animated: false)
+                        break
+                    }
+                    index += 1
+                } while (index < itemTypes.count)
+            }
         }
     }
     @IBAction func deletePressed(_ sender: Any) {
@@ -154,7 +194,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
-    
+
     
     
 }

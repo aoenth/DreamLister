@@ -2,7 +2,7 @@
 //  ItemType+CoreDataProperties.swift
 //  DreamLister
 //
-//  Created by Kevin on 2017-05-24.
+//  Created by Kevin on 2017-05-25.
 //  Copyright © 2017 Monorail Apps. All rights reserved.
 //
 
