@@ -20,7 +20,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-        generateTestData()
+        //generateTestData()
         attemptFetch()
     }
     
@@ -60,6 +60,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         fetchRequest.sortDescriptors = [dateSort]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        controller.delegate = self
         
         self.controller = controller
         

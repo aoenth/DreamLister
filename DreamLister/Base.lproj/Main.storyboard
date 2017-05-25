@@ -110,6 +110,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="0gV-Wz-qQO" secondAttribute="trailing" constant="8" id="tsP-Ur-0Ng"/>
                                                 <constraint firstItem="0gV-Wz-qQO" firstAttribute="centerX" secondItem="Gbh-Bz-IQA" secondAttribute="centerX" id="txt-Hi-lue"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -120,6 +123,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,6 +138,9 @@
                             <constraint firstItem="v42-lf-N3Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jNa-H4-2Xu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v42-lf-N3Y" secondAttribute="bottom" id="rUT-FH-FVB"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="DreamLister" id="Ztb-98-a2N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wze-ol-9UI">
@@ -177,7 +186,7 @@
                                     <constraint firstAttribute="width" constant="100" id="ccy-Dd-suK"/>
                                 </constraints>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YLG-vb-VGh" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YLG-vb-VGh" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="124" y="82" width="235" height="40"/>
                                 <color key="backgroundColor" white="0.89168242610000004" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -187,7 +196,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-2B-FfP" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-2B-FfP" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="124" y="132" width="235" height="40"/>
                                 <color key="backgroundColor" white="0.89168242610000004" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -197,7 +206,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvS-OB-Rlo" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvS-OB-Rlo" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="16" y="180" width="343" height="60"/>
                                 <color key="backgroundColor" white="0.89168242610000004" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

@@ -29,19 +29,19 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         storePicker.delegate = self
         storePicker.dataSource = self
         
-//        let store = Store(context: context)
-//        store.name = "Best Buy"
-//        let store2 = Store(context: context)
-//        store2.name = "Tesla Dealership"
-//        let store3 = Store(context: context)
-//        store3.name = "Frys Electronics"
-//        let store4 = Store(context: context)
-//        store4.name = "Target"
-//        let store5 = Store(context: context)
-//        store5.name = "Amazon"
-//        let store6 = Store(context: context)
-//        store6.name = "K Mart"
-//        ad.saveContext()
+        let store = Store(context: context)
+        store.name = "Best Buy"
+        let store2 = Store(context: context)
+        store2.name = "Tesla Dealership"
+        let store3 = Store(context: context)
+        store3.name = "Frys Electronics"
+        let store4 = Store(context: context)
+        store4.name = "Target"
+        let store5 = Store(context: context)
+        store5.name = "Amazon"
+        let store6 = Store(context: context)
+        store6.name = "K Mart"
+        ad.saveContext()
         getStores()
     }
 
@@ -91,6 +91,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
         
         ad.saveContext()
+        navigationController?.popViewController(animated: true)
     }
     
 }
