@@ -154,7 +154,7 @@
         <!--Add/Edit-->
         <scene sceneID="4Bt-er-GrB">
             <objects>
-                <viewController id="EX5-sB-oiP" customClass="ItemDetailVC" sceneMemberID="viewController">
+                <viewController id="EX5-sB-oiP" customClass="ItemDetailVC" customModule="DreamLister" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aAx-la-kHU"/>
                         <viewControllerLayoutGuide type="bottom" id="IH2-Mo-B2p"/>
@@ -266,6 +266,12 @@
                             <color key="tintColor" red="0.91317020940000004" green="0.2209513129" blue="0.28111214950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsField" destination="EvS-OB-Rlo" id="T3q-Us-12K"/>
+                        <outlet property="priceField" destination="Pe3-2B-FfP" id="lcl-gZ-8Ty"/>
+                        <outlet property="storePicker" destination="6RQ-cR-fa8" id="N9G-Fb-BoC"/>
+                        <outlet property="titleField" destination="YLG-vb-VGh" id="HPW-pI-eQs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTQ-3L-45u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
