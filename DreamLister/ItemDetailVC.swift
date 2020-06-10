@@ -23,6 +23,12 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     var itemToEdit: Item?
     var imagePicker: UIImagePickerController!
     
+    var isFormEmpty: Bool {
+        titleField.text!.isEmpty
+            && priceField.text!.isEmpty
+            && detailsField.text!.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +50,9 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveData()
+        if isFormEmpty == false {
+            saveData()
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -115,7 +123,9 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     
     
     @IBAction func savePressed(_ sender: UIButton) {
-        saveData()
+        if isFormEmpty == false {
+            saveData()
+        }
     }
     
     private func saveData() {
