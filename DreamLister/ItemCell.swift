@@ -20,9 +20,17 @@ class ItemCell: UITableViewCell {
     
     func configureCell(item: Item) {
         title.text = item.title
-        price.text = "$\(item.price)"
+        price.text = formatPrice(item.price)
         details.text = item.details
         thumb.image = item.toImage?.image as? UIImage
+    }
+    
+    private func formatPrice(_ price: Double) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 0
+        numberFormatter.numberStyle = .currency
+        return numberFormatter.string(from: NSNumber(value: price)) ?? "$0"
     }
     
 }
