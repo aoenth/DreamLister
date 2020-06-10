@@ -164,7 +164,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         let item = Item(context: context)
         item.title = "MacBook Pro"
         item.price = 2999.99
-        item.details = "I can' wait until the September event, I hope they release new MPBs"
+        item.details = "I can't wait until the next Apple event, I hope they release new MBPs"
         
         let image1 = Image(context: context)
         image1.image = #imageLiteral(resourceName: "macbook")

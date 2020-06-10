@@ -328,6 +328,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="imagePick" width="300" height="300"/>
-        <image name="tesla" width="640" height="480"/>
+        <image name="tesla" width="666" height="322"/>
     </resources>
 </document>
