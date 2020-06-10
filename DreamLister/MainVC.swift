@@ -81,7 +81,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func initilize() {
         initializeStoresTypes()
-        //generateTestData()
+        generateTestData()
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: userDefaultsInitializationKey)
     }
@@ -163,19 +163,31 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func generateTestData() {
         let item = Item(context: context)
         item.title = "MacBook Pro"
-        item.price = 1800
+        item.price = 2999.99
         item.details = "I can' wait until the September event, I hope they release new MPBs"
+        
+        let image1 = Image(context: context)
+        image1.image = #imageLiteral(resourceName: "macbook")
+        item.toImage = image1
         
         let item2 = Item(context: context)
         item2.title = "Bose Headphones"
-        item2.price = 300
-        item2.details = "I can't wait to block out everyone with those noise cancelling headphones"
+        item2.price = 399.99
+        item2.details = "I can't wait to block out the construction noise with those noise cancelling headphones"
+        
+        let image2 = Image(context: context)
+        image2.image = #imageLiteral(resourceName: "bose")
+        item2.toImage = image2
         
         let item3 = Item(context: context)
         item3.title = "Tesla Model S"
-        item3.price = 110000
-        item3.details = "Man this is a beautiful car. And one ady, I will own it."
-    
+        item3.price = 104600
+        item3.details = "I love this beautiful car. And one day, I will own it."
+        
+        let image3 = Image(context: context)
+        image3.image = #imageLiteral(resourceName: "tesla")
+        item3.toImage = image3
+        
         ad.saveContext()
     }
     
@@ -183,7 +195,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         let stores = [
         "Best Buy",
         "Tesla Dealership",
-        "Amazon"
+        "Apple Store"
         ]
         
         stores.forEach {

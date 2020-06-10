@@ -207,7 +207,7 @@
                                     <constraint firstAttribute="height" constant="40" id="co7-hb-hYb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
                                 </userDefinedRuntimeAttributes>
