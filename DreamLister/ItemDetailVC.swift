@@ -26,7 +26,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         super.viewDidLoad()
 
         if let topItem = self.navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         }
         
         storePicker.delegate = self
@@ -41,16 +41,6 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
             loadItemData()
         }
     }
-
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        if component == 0 {
-//            let store = stores[row]
-//            return store.name
-//        } else {
-//            let itemType = itemTypes[row]
-//            return itemType.type
-//        }
-//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -71,27 +61,31 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         if component == 0 {
-            var label = view as! UILabel!
-            if label == nil {
+            var label: UILabel
+            if let lbl = view as? UILabel {
+                label = lbl
+            } else {
                 label = UILabel()
             }
             
             let data = stores[row].name
-            let title = NSAttributedString(string: data!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
-            label?.attributedText = title
+            let title = NSAttributedString(string: data!, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
+            label.attributedText = title
             
-            return label!
+            return label
         } else {
-            var label = view as! UILabel!
-            if label == nil {
+            var label: UILabel
+            if let lbl = view as? UILabel {
+                label = lbl
+            } else {
                 label = UILabel()
             }
             
             let data = itemTypes[row].type
-            let title = NSAttributedString(string: data!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
-            label?.attributedText = title
+            let title = NSAttributedString(string: data!, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
+            label.attributedText = title
             
-            return label!
+            return label
         }
     }
     
@@ -187,14 +181,12 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         present(imagePicker, animated:  true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             thumbImage.image = image
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
-
     
     
 }

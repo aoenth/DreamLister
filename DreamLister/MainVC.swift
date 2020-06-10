@@ -12,13 +12,12 @@ import CoreData
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    private let userDefaultsInitializationKey = "IsInitialized"
     
     var controller: NSFetchedResultsController<Item>!
-    var ini = InitApp(context: context)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
         if !isInitialized() {
@@ -76,18 +75,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func isInitialized() -> Bool {
-        if !ini.isInit {
-            return false
-        } else {
-            return true
-        }
+        let defaults = UserDefaults.standard
+        return defaults.bool(forKey: userDefaultsInitializationKey)
     }
     
     func initilize() {
         initializeStoresTypes()
         //generateTestData()
-        ini.isInit = true
-        ad.saveContext()
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: userDefaultsInitializationKey)
     }
     
     func attemptFetch() {
@@ -159,6 +155,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break
+        @unknown default:
+            fatalError("Unknown object change detected! \(type)")
         }
     }
     

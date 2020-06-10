@@ -25,8 +25,6 @@
 		0A6780041ED7837600AD45E4 /* ItemType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A677FFA1ED7837600AD45E4 /* ItemType+CoreDataProperties.swift */; };
 		0A6780051ED7837600AD45E4 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A677FFB1ED7837600AD45E4 /* Store+CoreDataClass.swift */; };
 		0A6780061ED7837600AD45E4 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A677FFC1ED7837600AD45E4 /* Store+CoreDataProperties.swift */; };
-		0A67800D1ED7848500AD45E4 /* InitApp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A67800B1ED7848500AD45E4 /* InitApp+CoreDataClass.swift */; };
-		0A67800E1ED7848500AD45E4 /* InitApp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A67800C1ED7848500AD45E4 /* InitApp+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +48,6 @@
 		0A677FFA1ED7837600AD45E4 /* ItemType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ItemType+CoreDataProperties.swift"; path = "../ItemType+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0A677FFB1ED7837600AD45E4 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Store+CoreDataClass.swift"; path = "../Store+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0A677FFC1ED7837600AD45E4 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Store+CoreDataProperties.swift"; path = "../Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0A67800B1ED7848500AD45E4 /* InitApp+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "InitApp+CoreDataClass.swift"; path = "../InitApp+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0A67800C1ED7848500AD45E4 /* InitApp+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "InitApp+CoreDataProperties.swift"; path = "../InitApp+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +105,6 @@
 		0A35FFEC1ED60B0200AC2B3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0A67800B1ED7848500AD45E4 /* InitApp+CoreDataClass.swift */,
 				0A677FF51ED7837600AD45E4 /* Item+CoreDataClass.swift */,
 				0A677FF71ED7837600AD45E4 /* Image+CoreDataClass.swift */,
 				0A677FF91ED7837600AD45E4 /* ItemType+CoreDataClass.swift */,
@@ -122,7 +117,6 @@
 		0A35FFED1ED60B0C00AC2B3C /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				0A67800C1ED7848500AD45E4 /* InitApp+CoreDataProperties.swift */,
 				0A677FF61ED7837600AD45E4 /* Item+CoreDataProperties.swift */,
 				0A677FF81ED7837600AD45E4 /* Image+CoreDataProperties.swift */,
 				0A677FFA1ED7837600AD45E4 /* ItemType+CoreDataProperties.swift */,
@@ -168,19 +162,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Monorail Apps";
 				TargetAttributes = {
 					0A35FFA01ED6022E00AC2B3C = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = P8KUZ3YSVM;
+						DevelopmentTeam = 3WM87N8XYQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 0A35FF9C1ED6022E00AC2B3C /* Build configuration list for PBXProject "DreamLister" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -216,7 +210,6 @@
 			files = (
 				0A677FFF1ED7837600AD45E4 /* Item+CoreDataClass.swift in Sources */,
 				0A35000B1ED72E7A00AC2B3C /* ItemDetailVC.swift in Sources */,
-				0A67800E1ED7848500AD45E4 /* InitApp+CoreDataProperties.swift in Sources */,
 				0A6780031ED7837600AD45E4 /* ItemType+CoreDataClass.swift in Sources */,
 				0A6780011ED7837600AD45E4 /* Image+CoreDataClass.swift in Sources */,
 				0A6780051ED7837600AD45E4 /* Store+CoreDataClass.swift in Sources */,
@@ -230,7 +223,6 @@
 				0A35FFAD1ED6022E00AC2B3C /* DreamLister.xcdatamodeld in Sources */,
 				0A6780001ED7837600AD45E4 /* Item+CoreDataProperties.swift in Sources */,
 				0A35000D1ED7314D00AC2B3C /* CustomTextField.swift in Sources */,
-				0A67800D1ED7848500AD45E4 /* InitApp+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,15 +258,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -317,15 +317,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -355,12 +363,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P8KUZ3YSVM;
+				DEVELOPMENT_TEAM = 3WM87N8XYQ;
 				INFOPLIST_FILE = DreamLister/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.monorailapps.DreamLister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -368,12 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P8KUZ3YSVM;
+				DEVELOPMENT_TEAM = 3WM87N8XYQ;
 				INFOPLIST_FILE = DreamLister/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.monorailapps.DreamLister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
