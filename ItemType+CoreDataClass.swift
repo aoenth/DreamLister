@@ -13,3 +13,12 @@ import CoreData
 public class ItemType: NSManagedObject {
 
 }
+
+extension ItemType: Comparable {
+    public static func <(lhs: ItemType, rhs: ItemType) -> Bool {
+        if lhs.type == "Other" {
+            return false
+        }
+        return lhs.type < rhs.type
+    }
+}

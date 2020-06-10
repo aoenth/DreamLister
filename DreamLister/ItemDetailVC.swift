@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MBProgressHUD
 
 class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -42,6 +43,10 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        saveData()
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -69,7 +74,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
             }
             
             let data = stores[row].name
-            let title = NSAttributedString(string: data!, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
+            let title = NSAttributedString(string: data, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
             label.attributedText = title
             
             return label
@@ -82,7 +87,7 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
             }
             
             let data = itemTypes[row].type
-            let title = NSAttributedString(string: data!, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
+            let title = NSAttributedString(string: data, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)])
             label.attributedText = title
             
             return label
@@ -92,21 +97,32 @@ class ItemDetailVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     func getStoresTypes() {
         let fetchRequest:NSFetchRequest<Store> = Store.fetchRequest()
         let fetchRequestItem:NSFetchRequest<ItemType> = ItemType.fetchRequest()
+        var stores = [Store]()
+        var itemTypes = [ItemType]()
         do {
-            self.stores = try context.fetch(fetchRequest)
-            self.itemTypes = try context.fetch(fetchRequestItem)
-            self.storePicker.reloadAllComponents()
+            stores = try context.fetch(fetchRequest)
+            itemTypes = try context.fetch(fetchRequestItem)
+            
         } catch {
-            //handle the error
+            ErrorMessageView.show(errorMessage: "Cannot fetch Store Types", on: self.view)
+            return
         }
+        
+        self.stores = stores.sorted()
+        self.itemTypes = itemTypes.sorted()
+        self.storePicker.reloadAllComponents()
     }
     
     
     @IBAction func savePressed(_ sender: UIButton) {
+        saveData()
+    }
+    
+    private func saveData() {
         var item: Item!
         let picture = Image(context: context)
         picture.image = thumbImage.image
-
+        
         
         if itemToEdit == nil {
             item = Item(context: context)

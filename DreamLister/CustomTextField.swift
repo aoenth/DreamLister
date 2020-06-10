@@ -22,7 +22,6 @@ extension UIColor {
 @IBDesignable
 class CustomTextField: UITextField {
     
-    
     // MARK: - IBInspectable
     @IBInspectable var tintCol: UIColor = UIColor(netHex: 0x707070)
     @IBInspectable var fontCol: UIColor = UIColor(netHex: 0x707070)

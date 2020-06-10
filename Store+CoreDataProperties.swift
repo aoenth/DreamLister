@@ -16,7 +16,7 @@ extension Store {
         return NSFetchRequest<Store>(entityName: "Store")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var toImage: Image?
     @NSManaged public var toItem: NSSet?
 

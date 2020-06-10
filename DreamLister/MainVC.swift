@@ -180,26 +180,27 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func initializeStoresTypes() {
-        let store = Store(context: context)
-        store.name = "Best Buy"
-        let store2 = Store(context: context)
-        store2.name = "Tesla Dealership"
-        let store3 = Store(context: context)
-        store3.name = "Frys Electronics"
-        let store4 = Store(context: context)
-        store4.name = "Target"
-        let store5 = Store(context: context)
-        store5.name = "Amazon"
-        let store6 = Store(context: context)
-        store6.name = "K Mart"
+        let stores = [
+        "Best Buy",
+        "Tesla Dealership",
+        "Amazon"
+        ]
         
-        let type = ItemType(context: context)
-        type.type = "Electronics"
-        let type2 = ItemType(context: context)
-        type2.type = "Clothes"
-        let type3 = ItemType(context: context)
-        type3.type = "Other"
+        stores.forEach {
+            let store = Store(context: context)
+            store.name = $0
+        }
         
+        let types = [
+        "Electronics",
+        "Cars",
+        "Other"
+        ]
+        
+        types.forEach {
+            let type = ItemType(context: context)
+            type.type = $0
+        }
         ad.saveContext()
     }
     

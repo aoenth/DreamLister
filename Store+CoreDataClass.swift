@@ -13,3 +13,9 @@ import CoreData
 public class Store: NSManagedObject {
 
 }
+
+extension Store: Comparable {
+    public static func <(lhs: Store, rhs: Store) -> Bool {
+        lhs.name < rhs.name
+    }
+}
